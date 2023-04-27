@@ -21,8 +21,8 @@ export const YearCard = ({year}: IYearCard) => {
   const [uppdateData, setUppdateData] = useState(0)
   
   const fetchGames = async (year:string) => {
-    // need to make address consistent with the server
-    let result = await fetch(`http://localhost:3000/api/games`).then(response => response.json())
+    // Build the API route URL based on the current page's protocol, hostname, and port
+    let result = await fetch(`${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/api/games`).then(response => response.json())
     return result.filter((item:any) => item.tgaYear === year)
   }
 
